@@ -1,4 +1,5 @@
-import * as cdk from 'aws-cdk-lib';
+import { expect as expectCDK, matchTemplate, MatchStyle } from '@aws-cdk/assert';
+import * as cdk from '@aws-cdk/core';
 import * as DevEnv from '../lib/dev-env-stack';
 
 test('Empty Stack', () => {
@@ -6,6 +7,7 @@ test('Empty Stack', () => {
     // WHEN
     const stack = new DevEnv.DevEnvStack(app, 'MyTestStack');
     // THEN
-    const actual = app.synth().getStackArtifact(stack.artifactId).template;
-    expect(actual.Resources ?? {}).toEqual({});
+    expectCDK(stack).to(matchTemplate({
+      "Resources": {}
+    }, MatchStyle.EXACT))
 });
