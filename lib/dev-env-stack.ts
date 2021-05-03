@@ -29,7 +29,7 @@ export class DevEnvStack extends Stack {
         actionName: 'Source',
         output: sourceArtifact,
         oauthToken: oauthToken,
-        owner: StringParameter.valueForStringParameter(this, '/devStack/repoOwner'),
+        owner: StringParameter.valueForStringParameter(this, '/devEnv/repoOwner'),
         repo: StringParameter.valueForStringParameter(this, '/devEnv/repo'),
         branch: 'main',
       }),
